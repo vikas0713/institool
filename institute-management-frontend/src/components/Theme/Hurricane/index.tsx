@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector, useAppDispatch } from '../../../store/hooks';
 import { logout } from '../../../features/auth/authSlice';
+import { selectDarkMode } from '../../../features/ui/darkModeSlice';
 import Sidebar from './Sidebar';
 import Header from './Header';
 import './hurricane.css';
 
 const HurricaneTheme: React.FC = () => {
   const { user } = useAppSelector((state) => state.auth);
+  const darkMode = useAppSelector(selectDarkMode);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -40,10 +42,19 @@ const HurricaneTheme: React.FC = () => {
     window.onresize = () => {
       compactLayout();
     };
-  }, []);
+    
+    // Apply dark mode class to document
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   return (
-    <div className="hurricane min-h-screen bg-slate-50">
+    <div className={`hurricane min-h-screen transition-colors duration-300 ${
+      darkMode ? 'dark bg-darkmode-800' : 'bg-slate-50'
+    }`}>
       {/* Sidebar */}
       <Sidebar
         compactMenu={compactMenu}

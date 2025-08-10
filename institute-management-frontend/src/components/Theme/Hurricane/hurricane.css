@@ -1,5 +1,65 @@
 /* Hurricane Theme Styles */
 .hurricane {
+  /* Dark mode background */
+  &.dark {
+    background-color: #1e293b;
+    color: #f1f5f9;
+  }
+  
+  /* Dark mode sidebar */
+  &.dark .side-menu {
+    background-color: #0f172a;
+    border-color: #334155;
+  }
+  
+  &.dark .side-menu__link {
+    color: #cbd5e1;
+    
+    &:hover {
+      background-color: #1e293b;
+      color: #f1f5f9;
+    }
+    
+    &--active {
+      background-color: #1e40af;
+      color: #ffffff;
+      
+      .side-menu__link__title {
+        color: #ffffff;
+      }
+    }
+  }
+  
+  &.dark .side-menu__divider {
+    color: #64748b;
+  }
+  
+  /* Dark mode main content area */
+  &.dark .main-content {
+    background-color: #1e293b;
+  }
+  
+  /* Dark mode cards and boxes */
+  &.dark .bg-white {
+    background-color: #334155 !important;
+    border-color: #475569;
+  }
+  
+  &.dark .text-slate-500 {
+    color: #94a3b8 !important;
+  }
+  
+  &.dark .text-slate-700 {
+    color: #cbd5e1 !important;
+  }
+  
+  &.dark .border-slate-200 {
+    border-color: #475569 !important;
+  }
+  
+  &.dark .bg-slate-50 {
+    background-color: #1e293b !important;
+  }
   .side-menu {
     @media (min-width: 1280px) {
       .side-menu--collapsed {
